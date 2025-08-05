@@ -1,84 +1,106 @@
-# TestAsBBBOT - chat bot
-It is repository for chat bot: [@TestAsBBBOT](https://t.me/TestAsBBBOT)
+# 🤖 BB Guide Bot – Learning Telegram Bot Building
 
-## What it is?
-This repository can be imported to [Bots.Business](https://bots.business) as a worked chat bot.
+A dynamic learning assistant built on the [Bots.Business](https://app.bots.business) platform, the BB Guide Bot teaches users how to create their own Telegram bots using **interactive lessons, in-chat quizzes, level-up celebrations**, and a **WebApp-based profile system**.
 
-[Bots.Business](https://bots.business) - it is probably the first CBPaaS - Chat Bot Platform as a Service.
+---
 
-A CBPaaS is a cloud-based platform that enables developers to create chatbots without needing to build backend infrastructure.
+## 🌟 Features
 
-## Create your own bot for Telegram from this Git repo
+- 📚 **Interactive Lessons**  
+  Learn step-by-step how to build Telegram bots using Bots.Business platform.
 
-How to create bot?
-1. Create bot with [@BotFather](https://telegram.me/BotFather) and take Secret Token
-2. Create bot in App and add Secret Token
-3. Add Public Key from App as [Deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) with read access (and write access for bot exporting if you need it)
-4. Do import for this git repo
+- 🧩 **End-of-Step Quizzes**  
+  Quizzes after every key step to test knowledge and unlock progress.
 
-Now you can talk with yours new Telegram Bot
+- 🏆 **Live Leaderboard**  
+  Tracks top learners by level and score.
 
-See [more](https://help.bots.business/getting-started)
+- 🎉 **Level-Up Celebrations**  
+  Fun animations and XP system for streaks and quiz success.
 
-## Commands - in commands folder
-File name - it is command name (Bot it can be rewritten in command description)
+- 🖥️ **WebApp Interface**  
+  Integrated Telegram WebApp for profile, streak tracker, and commands.
 
-Command can have: `name`, `help`, `aliases` (second names), `answer`, `keyboard`, `scnarios` (for simple logic) and other options.
+- 📈 **Daily Login Streak System**  
+  Encourages continuous learning by rewarding consistency.
 
-### Command description
-It is file header:
+---
 
-    /*CMD
-      command: /test
-      help: this is help for ccommand
-      need_reply: [ true or false here ]
-      auto_retry_time: [ time in sec ]
-      answer: it is example answer for /test command
-      keyboard: button1, button2
-      aliases: /test2, /test3
-    CMD*/
+## 🛠️ Admin Panel
 
-See [more](https://help.bots.business/commands)
+The bot supports auto and manual content loading from Google Sheets.
 
-### Command body
-It is command code in JavaScript.
-Use Bot Java Script for logic in command.
+### ⏱️ Auto-Import (Every 24 Hours)
 
-For example:
-> Bot.sendMessage(2+2);
+These sheets are automatically fetched and updated every 24 hours:
 
-See [more](https://help.bots.business/scenarios-and-bjs)
+| Type       | Source Link | Auto-Update | Manual Command |
+|------------|-------------|-------------|----------------|
+| 📚 Quiz    | [Quiz Sheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vRN45jXZVX6JSlGgy9ql21wpnVGT5pnIWpSMjX0fhF8uRtbKuJIovaCBKm8Y29w4lUPGvh7QN3NoMpd/pubhtml) | ✅ | `/setup1` |
+| 🧩 Lessons | [Lesson Sheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vSmaKqhLNlgXZ98D-GfQW8Ou-aRPRVcPuFKzvsUxyEroRtx7CmCBXh2cKrOAok46c7qhBlwzcBNVEqU/pubhtml) | ✅ | `/setup`  |
+| 📦 Version | [Version Sheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vSV4wjczHHduVgsbDY8wFTfIV7Qb0kk8pkQ69W1T1kIf6v1HTO7FUADShXrDFmUh9rw3_v3YA0lh-cU/pubhtml) | ✅ | `/setup2` |
 
+---
 
-## Libraries - in libs folder
-You can store common code in the libs folder. File name - it is library name.
+### 🔐 Manual Update Access
 
-For example code in myLib.js:
+To run manual `/setup`, `/setup1`, or `/setup2` commands, you **must be the bot owner**.  
+To set yourself as an admin:
 
-    function hello(){ Bot.sendMessage("Hello from lib!") }
-    function goodbye(name){ Bot.sendMessage("Goodbye, " + name) }
+1. Open `login.js`
+2. Update the first line:
 
-    publish({
-      sayHello: hello,
-      sayGoodbyeTo: goodbye
-    })
+```js
+let allowedAdmins = [6140468904, 123456789]; // ✅ Replace with your Telegram user IDs
+```
 
-then you can run in any bot's command:
+3. To find your Telegram ID, use: [@chat\_id\_echo\_bot](https://t.me/chat_id_echo_bot)
 
-    Libs.myLib.hello()
-    Libs.myLib.sayGoodbyeTo("Alice")
+---
 
-See [more](https://help.bots.business/git/library)
+## 📄 Google Sheet Formats
 
-## Other bots example
-See other bots examples in the [github](https://github.com/bots-business?utf8=✓&tab=repositories&q=&type=public&language=javascript) or in the [Bot Store](https://bots.business/)
+### 🧩 Lesson Sheet Format
 
+| id | step | title           | description                  | text                                    | photo                                                                          | YouTube Video                                                                              | Help                                                                                     | extra (JSON)                                                     |
+| -- | ---- | --------------- | ---------------------------- | --------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| L1 | 1    | Getting Started | How to create your first bot | Open Telegram and search for @BotFather | `https://telegrambots.github.io/book/1/docs/logo-bot-father.jpg`               | [https://www.youtube.com/watch?v=MZixi8oIdaA](https://www.youtube.com/watch?v=MZixi8oIdaA) | [https://help.bots.business/getting-started](https://help.bots.business/getting-started) | `[{"text": "Open @BotFather", "url": "https://t.me/BotFather"}]` |
+| L1 | 2    |                 |                              | When BotFather asks, send `/newbot`     | `https://8upload.com/image/686e1f4866514/16fe52bb103f3c23a82c507d742d96bc.png` |                                                                                            | [https://help.bots.business/getting-started](https://help.bots.business/getting-started) |                                                                  |
 
-## Other help
-[Help.bots.business](https://help.bots.business)
+### 📚 Quiz Sheet Format
 
-## API
-See [API](https://api.bots.business/docs#/docs/summary)
+| lesson\_id | step | question                             | options                             | answer        |
+| ---------- | ---- | ------------------------------------ | ----------------------------------- | ------------- |
+| L1         | 2    | What is the command to create a bot? | /start;/help;/newbot                | /newbot       |
+| L1         | 4    | Where to find @BotFather?            | Telegram App;WhatsApp;Instagram     | Telegram App  |
+| L2         | 2    | What does Bot.sendMessage do?        | Sends photo;Sends message;Stops bot | Sends message |
+| L3         | 2    | What is mainMenu in this code?       | Command;Name;James Bond             | Command       |
 
+### 📦 Version/Meta Sheet Format
 
-![](https://bots.business/images/web-logo.png)
+| key               | value      |
+| ----------------- | ---------- |
+| version           | v6.9.5     |
+| template\_version | 1.5        |
+| lang              | en         |
+| updated\_at       | 20.07.2025 |
+
+---
+
+## 🖼️ Screenshots & Media
+
+| Description        | Preview                                                                                         |
+| ------------------ | ----------------------------------------------------------------------------------------------- |
+| 🤖 Bot DP          | ![Bot DP](https://8upload.com/image/6885c7bd97f5d/e26a1bc8a65c4d236202556320bfc60c.png)         |
+| 🚀 Starting Screen | ![Start Screen](https://8upload.com/image/688ac9fe93714/f9d259ffd6dcc42d7480f396fa27d604.png)   |
+| 👤 Profile WebApp  | ![Profile WebApp](https://8upload.com/image/68921a5bb2f93/a71cefa4664330ef6a811704e311e030.png) |
+
+---
+
+## 👨‍💻 Developer
+
+* Developer: [@TryToLiveAlone](https://t.me/TryToLiveAlone)
+* Platform: [Bots.Business](https://app.bots.business)
+* Language: `bjs`
+* Hosting: BB cloud
+
