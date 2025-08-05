@@ -99,6 +99,37 @@ let allowedAdmins = [6140468904, 123456789]; // ✅ Replace with your Telegram u
 
 ---
 
+### 🔮 Upcoming Updates
+
+Exciting new features in progress for the BB Guide Bot:
+
+#### 🌐 Multilingual Support (via OpenAI)
+
+We are implementing a smart language-switching feature that will allow users to view **lessons, quizzes, and help articles in their preferred language** using **OpenAI's translation workflow**.
+
+✅ Planned Functionality:
+
+* Users will be able to set their language using ISO 639-1 codes (`/setlang`)
+* The bot will auto-translate content using OpenAI's language model.
+* Cached translations to minimize latency and API usage.
+* Fallback to English when translation is unavailable.
+
+🛠 Example:
+
+```bash
+/setlang 
+```
+
+Bot response:
+
+> ✅ Votre langue préférée a été définie sur : `fr`
+
+> 🌐 Toutes les leçons suivantes seront automatiquement traduites en français.
+
+⚙️ This will rely on OpenAI's API and a background worker or cron to update translations in real time or batch mode.
+
+---
+
 ## 👨‍💻 Developer
 
 * Developer: [@TryToLiveAlone_Backup](https://t.me/TryToLiveAlone_Backup)
@@ -106,3 +137,4 @@ let allowedAdmins = [6140468904, 123456789]; // ✅ Replace with your Telegram u
 * Language: `bjs`
 * Hosting: BB cloud
 
+A Big thanks to the BB community for the contest love from heart give a visit to there [docs](https://help.bots.business/) and [support chat](https://t.me/chatbotsbusiness)
