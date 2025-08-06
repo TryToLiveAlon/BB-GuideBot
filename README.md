@@ -1,5 +1,7 @@
 # 🤖 BB Guide Bot – Learning Telegram Bot Building
 
+![Main Preview](https://8upload.com/image/6893455ccdc2e/02cb50c75af2a144270fd72044d5474e.png)
+
 A dynamic learning assistant built on the [Bots.Business](https://app.bots.business) platform, the BB Guide Bot teaches users how to create their own Telegram bots using **interactive lessons, in-chat quizzes, level-up celebrations**, and a **WebApp-based profile system**.
 
 Bots's Username - [@BBdocumentBot](https://t.me/BBdocumentBot)
