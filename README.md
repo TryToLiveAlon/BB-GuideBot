@@ -134,7 +134,7 @@ Bot response:
 
 ## 👨‍💻 Developer
 
-* Developer: [@TryToLiveAlone_Backup](https://t.me/TryToLiveAlone_Backup)
+* Developer: [@TryToLiveAlon Backup](https://t.me/TryToLiveAlon_Backup)
 * Platform: [Bots.Business](https://app.bots.business)
 * Language: `bjs`
 * Hosting: BB cloud
